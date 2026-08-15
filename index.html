@@ -1,637 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TenglishBible – Telugu Bible in English Letters</title>
-
-    <meta name="description"
-          content="TenglishBible is a Telugu Bible written in English letters, making Bible reading simple and accessible.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #fffdf8;
-            color: #1f2937;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* NAVBAR */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 253, 248, 0.96);
-            border-bottom: 1px solid #eee5d5;
-            backdrop-filter: blur(10px);
-        }
-
-        .navbar {
-            max-width: 1150px;
-            margin: auto;
-            padding: 18px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #8b5e34;
-        }
-
-        .logo span {
-            color: #c58b3a;
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            color: #4b5563;
-            font-weight: 600;
-            font-size: 15px;
-        }
-
-        nav a:hover {
-            color: #9a642e;
-        }
-
-        /* HERO */
-
-        .hero {
-            max-width: 1150px;
-            margin: auto;
-            padding: 90px 22px 80px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #f5ead7;
-            color: #8b5e34;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 70px);
-            line-height: 1.05;
-            color: #3b2a1d;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 span {
-            color: #b8792d;
-        }
-
-        .hero p {
-            font-size: 19px;
-            color: #6b7280;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 25px;
-            border-radius: 10px;
-            font-weight: 700;
-            transition: 0.2s;
-        }
-
-        .btn-primary {
-            background: #9a642e;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #7e4e24;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            border: 1px solid #d8c6ad;
-            color: #8b5e34;
-            background: white;
-        }
-
-        .btn-secondary:hover {
-            background: #f8f0e3;
-        }
-
-        /* PHONE MOCKUP */
-
-        .phone-area {
-            display: flex;
-            justify-content: center;
-        }
-
-        .phone {
-            width: 270px;
-            height: 550px;
-            border: 9px solid #252525;
-            border-radius: 38px;
-            background: linear-gradient(160deg, #fff8e9, #ead3ae);
-            box-shadow: 0 25px 60px rgba(65, 42, 20, 0.22);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phone-top {
-            height: 32px;
-            background: #252525;
-            width: 110px;
-            margin: 0 auto;
-            border-radius: 0 0 18px 18px;
-        }
-
-        .phone-content {
-            padding: 35px 22px;
-            text-align: center;
-        }
-
-        .cross {
-            font-size: 55px;
-            color: #a66b2b;
-            margin: 25px 0;
-        }
-
-        .phone-content h3 {
-            font-size: 24px;
-            color: #493321;
-            margin-bottom: 10px;
-        }
-
-        .phone-content p {
-            font-size: 14px;
-            color: #725f4b;
-        }
-
-        .verse {
-            margin-top: 30px;
-            background: rgba(255,255,255,0.7);
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 14px;
-            color: #574333;
-        }
-
-        /* SECTION */
-
-        section {
-            padding: 85px 22px;
-        }
-
-        .section-inner {
-            max-width: 1050px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            color: #3b2a1d;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #777;
-        }
-
-        /* FEATURES */
-
-        .features {
-            background: #f8f1e6;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .feature {
-            background: white;
-            padding: 30px 24px;
-            border-radius: 16px;
-            border: 1px solid #eadfce;
-            transition: 0.2s;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(70, 45, 20, 0.08);
-        }
-
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .feature h3 {
-            margin-bottom: 10px;
-            color: #4a3423;
-        }
-
-        .feature p {
-            color: #707070;
-            font-size: 15px;
-        }
-
-        /* ABOUT */
-
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about h2 {
-            font-size: 40px;
-            color: #3b2a1d;
-            margin-bottom: 18px;
-        }
-
-        .about p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .quote {
-            background: #f8f1e6;
-            border-left: 4px solid #b8792d;
-            padding: 22px;
-            border-radius: 8px;
-            color: #574333;
-            font-style: italic;
-        }
-
-        /* DOWNLOAD */
-
-        .download {
-            background: #3b2a1d;
-            color: white;
-            text-align: center;
-        }
-
-        .download h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .download p {
-            max-width: 650px;
-            margin: 0 auto 30px;
-            color: #dfd4c7;
-        }
-
-        .download .btn-primary {
-            background: #d69a4c;
-            color: #2e2117;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #241a13;
-            color: #bdb2a8;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        .footer-links {
-            margin-top: 12px;
-        }
-
-        .footer-links a {
-            color: #cdbfae;
-            margin: 0 8px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            nav {
-                display: none;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding-top: 60px;
-            }
-
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .buttons {
-                justify-content: center;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-            }
-
-            .phone {
-                width: 245px;
-                height: 500px;
-            }
-
-            .section-title h2,
-            .about h2,
-            .download h2 {
-                font-size: 32px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TenglishBible — Telugu Bible in English Letters</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#17233b;background:#fffaf2}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;border-bottom:1px solid #eadfce;background:#fffdf9;position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:800}.brand img{width:42px;height:42px;border-radius:12px}
+nav a{margin-left:28px;text-decoration:none;color:#344056;font-weight:600}
+.hero{max-width:1200px;margin:auto;padding:80px 7%;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.badge{display:inline-block;background:#f5e8cf;color:#9a5f20;padding:10px 16px;border-radius:30px;font-weight:700}
+h1{font-size:clamp(46px,6vw,78px);line-height:1.02;margin:22px 0 20px;color:#3a2a20}h1 span{color:#b97724}
+.hero p{font-size:19px;line-height:1.7;color:#5d6674;max-width:650px}
+.btn{display:inline-block;margin-top:15px;padding:15px 24px;border-radius:10px;text-decoration:none;font-weight:700;background:#a96c29;color:white}.btn.secondary{background:white;color:#9a6127;border:1px solid #d9c4a6;margin-left:10px}
+.hero-img{width:100%;max-width:460px;display:block;margin:auto;border-radius:28px;box-shadow:0 25px 60px #8b6b3a35}
+.section{padding:80px 7%;text-align:center}.section.alt{background:#f7efe2}
+h2{font-size:40px;margin:0 0 15px;color:#33261e}.lead{color:#69717e;font-size:18px}
+.features{max-width:1100px;margin:40px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:white;padding:28px;border-radius:18px;text-align:left;box-shadow:0 8px 30px #5b41201a}.card h3{margin-top:0}
+.gallery{max-width:1100px;margin:40px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.gallery img{width:100%;border-radius:18px;box-shadow:0 10px 30px #0002}
+.download{max-width:800px;margin:auto;background:#17233b;color:white;border-radius:24px;padding:50px 30px}.download h2{color:white}
+footer{text-align:center;padding:35px;color:#737b86;border-top:1px solid #eadfce}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:55px}.features,.gallery{grid-template-columns:1fr}.hero-img{max-width:380px}nav a{margin-left:12px}.brand{font-size:20px}}
+</style>
 </head>
-
 <body>
-
-<header>
-    <div class="navbar">
-
-        <a href="#" class="logo">
-            Tenglish<span>Bible</span>
-        </a>
-
-        <nav>
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
-            <a href="#download">Download</a>
-        </nav>
-
-    </div>
-</header>
-
-
-<main>
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div>
-
-            <div class="badge">
-                📖 Bible Reading Made Simple
-            </div>
-
-            <h1>
-                Read the Bible<br>
-                <span>in Tenglish.</span>
-            </h1>
-
-            <p>
-                TenglishBible makes Telugu Bible reading easier
-                by presenting Telugu words in English letters.
-                Simple to read. Easy to understand. Easy to share.
-            </p>
-
-            <div class="buttons">
-
-                <!-- Replace # with your APK download link later -->
-              <a href="https://github.com/vijayratnamsaka-code/TenglishBible/releases/latest/download/app-debug.apk" class="btn btn-primary">
-    ⬇ Download App
-</a>
-
-                <a href="#features" class="btn btn-secondary">
-                    Explore Features
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="phone-area">
-
-            <div class="phone">
-
-                <div class="phone-top"></div>
-
-                <div class="phone-content">
-
-                    <div class="cross">✝</div>
-
-                    <h3>TenglishBible</h3>
-
-                    <p>
-                        Telugu Bible<br>
-                        in English Letters
-                    </p>
-
-                    <div class="verse">
-                        “Your word is a lamp to my feet
-                        and a light to my path.”
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FEATURES -->
-
-    <section class="features" id="features">
-
-        <div class="section-inner">
-
-            <div class="section-title">
-
-                <h2>Simple. Clear. Meaningful.</h2>
-
-                <p>
-                    Everything you need for a simple Bible reading experience.
-                </p>
-
-            </div>
-
-
-            <div class="feature-grid">
-
-                <div class="feature">
-
-                    <div class="feature-icon">📖</div>
-
-                    <h3>Tenglish Bible</h3>
-
-                    <p>
-                        Read Telugu Bible words using familiar
-                        English letters.
-                    </p>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <div class="feature-icon">🔎</div>
-
-                    <h3>Easy Reading</h3>
-
-                    <p>
-                        A clean and simple reading experience
-                        designed for everyday Bible reading.
-                    </p>
-
-                </div>
-
-
-                <div class="feature">
-
-                    <div class="feature-icon">❤️</div>
-
-                    <h3>For Everyone</h3>
-
-                    <p>
-                        Helpful for anyone who can read English
-                        letters but prefers Telugu language.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <div class="section-inner about">
-
-            <div>
-
-                <h2>
-                    God's Word,<br>
-                    made easier to read.
-                </h2>
-
-                <p>
-                    TenglishBible is designed to make Telugu Bible
-                    reading more accessible through English-letter
-                    transliteration.
-                </p>
-
-                <p>
-                    Our goal is simple — help more people read,
-                    understand and spend time with God's Word.
-                </p>
-
-            </div>
-
-
-            <div class="quote">
-
-                “Your word is a lamp for my feet,
-                a light on my path.”
-
-                <br><br>
-
-                — Psalm 119:105
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- DOWNLOAD -->
-
-    <section class="download" id="download">
-
-        <div class="section-inner">
-
-            <h2>Start Reading Today</h2>
-
-            <p>
-                Download TenglishBible and experience
-                Telugu Bible reading in English letters.
-            </p>
-
-            <!-- Replace # with your actual APK/GitHub Release link -->
-            <a href="https://github.com/vijayratnamsaka-code/TenglishBible/releases/latest/download/app-debug.apk" class="btn btn-primary">
-    ⬇ Download App
-</a>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <p>
-        © 2026 <strong>TenglishBible</strong>. All rights reserved.
-    </p>
-
-    <div class="footer-links">
-
-       <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="#">Contact</a>
-
-    </div>
-
-</footer>
-
+<nav>
+  <div class="brand"><img src="logo.png" alt="TenglishBible logo">TenglishBible</div>
+  <div><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#download">Download</a></div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="badge">✝ Bible Reading Made Simple</div>
+    <h1>Read the Bible<br><span>in Tenglish.</span></h1>
+    <p>TenglishBible makes Telugu Bible reading easier by presenting Telugu words in English letters. Simple to read. Easy to understand. Easy to share.</p>
+    <a class="btn" href="#download">↓ Download App</a>
+    <a class="btn secondary" href="#features">Explore Features</a>
+  </div>
+  <img class="hero-img" src="banner.png" alt="TenglishBible">
+</section>
+
+<section id="features" class="section alt">
+<h2>Simple. Clear. Meaningful.</h2><p class="lead">A fully offline Bible reading experience.</p>
+<div class="features">
+<div class="card"><h3>📖 Tenglish Bible</h3><p>Read Telugu Bible verses using English letters, making reading comfortable and accessible.</p></div>
+<div class="card"><h3>🔎 Powerful Search</h3><p>Search Bible verses quickly by word and find relevant passages.</p></div>
+<div class="card"><h3>🌙 Light & Dark Mode</h3><p>Choose a comfortable reading theme and adjust text size while reading.</p></div>
+<div class="card"><h3>🎨 Verse Highlight</h3><p>Highlight verses with multiple colors for study and personal reflection.</p></div>
+<div class="card"><h3>📋 Copy & Share</h3><p>Copy or share selected Bible verses easily.</p></div>
+<div class="card"><h3>📴 Fully Offline</h3><p>No internet connection is required for Bible reading and core app features.</p></div>
+</div>
+</section>
+
+<section id="screenshots" class="section">
+<h2>See TenglishBible in Action</h2><p class="lead">A clean and simple reading experience.</p>
+<div class="gallery">
+<img src="screenshot1.jpg" alt="TenglishBible screenshot">
+<img src="screenshot2.jpg" alt="TenglishBible screenshot">
+<img src="screenshot3.jpg" alt="TenglishBible screenshot">
+<img src="screenshot4.jpg" alt="TenglishBible screenshot">
+<img src="screenshot5.jpg" alt="TenglishBible screenshot">
+</div>
+</section>
+
+<section id="download" class="section alt">
+<div class="download">
+<h2>Get TenglishBible</h2>
+<p>Read God's Word in Telugu using English letters — anytime, anywhere, completely offline.</p>
+<a class="btn" href="https://github.com/vijayratnamsaka-code/TenglishBible/releases/latest">Download Android App</a>
+</div>
+</section>
+
+<footer>© 2026 TenglishBible · God's Word in Your Language</footer>
 </body>
 </html>
